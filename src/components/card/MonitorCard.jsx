@@ -1,13 +1,9 @@
 import { Button } from "@/components/ui/button";
+import { certificationLogos } from "@/utils/certificationLogos";
 import { getDeltaEColor } from "@/utils/getDeltaEColor";
 import { Scale } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
-const certificationLogo = {
-  calman: "/images/logo/calman.png",
-  spyder: "/images/logo/data-color.jpg",
-};
 
 export default function MonitorCard({ monitor }) {
   const {
@@ -26,9 +22,9 @@ export default function MonitorCard({ monitor }) {
   } = monitor;
 
   return (
-    <div className="group bg-card overflow-hidden rounded border">
+    <div className="group bg-card min-w-xs overflow-hidden rounded border">
       <Link
-        href={`/monitors/${slug}`}
+        href={`/monitors/${brand}/${slug}`}
         className="relative block aspect-square overflow-hidden"
       >
         <Image
@@ -50,7 +46,7 @@ export default function MonitorCard({ monitor }) {
           {certification && (
             <div className="inline-flex items-center gap-1 rounded">
               <Image
-                src={certificationLogo[certification]}
+                src={certificationLogos[certification]}
                 alt={certification}
                 width={14}
                 height={14}
@@ -63,25 +59,29 @@ export default function MonitorCard({ monitor }) {
         </div>
 
         <Link
-          href={`/monitors/${slug}`}
+          href={`/monitors/${brand}/${slug}`}
           className="text-foreground mt-1 block text-base leading-snug font-semibold hover:underline"
         >
           {name}
         </Link>
 
-        <div className="text-muted-foreground mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-[13px]">
-          <span>
-            {screenSize}&quot; • {panelType}
-          </span>
-          <span>{resolution}</span>
-          <span>{refreshRate}Hz</span>
-
-          <div className="flex items-center gap-2">
-            <span className={`font-semibold ${getDeltaEColor(deltaE)}`}>
-              ΔE {deltaE}
+        <div className="text-muted-foreground mt-3 space-y-2 text-[13px]">
+          <div className="flex items-center justify-between">
+            <span>
+              {screenSize}&quot; • {panelType}
             </span>
-            <div className="bg-border inline-block h-3 w-px" />
-            <span className="text-muted-foreground">sRGB {srgb}%</span>
+            <span>{resolution}</span>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <span>{refreshRate}Hz</span>
+            <div className="flex items-center gap-2">
+              <span className={`font-semibold ${getDeltaEColor(deltaE)}`}>
+                ΔE {deltaE}
+              </span>
+              <div className="bg-border inline-block h-3 w-px shrink-0" />
+              <span>sRGB {srgb}%</span>
+            </div>
           </div>
         </div>
 

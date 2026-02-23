@@ -23,7 +23,7 @@ export default function FeaturedCompare() {
   return (
     <section className="py-16">
       <Container>
-        <div className="grid w-full grid-cols-2">
+        <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2 md:gap-0">
           {/* Image */}
           <div className="relative h-full min-h-80 overflow-hidden rounded">
             <Image
@@ -35,7 +35,7 @@ export default function FeaturedCompare() {
           </div>
 
           {/* Content */}
-          <div className="flex flex-col justify-center gap-0 p-8 md:p-10">
+          <div className="flex flex-col justify-center gap-0 md:p-10">
             <p className="text-muted-foreground text-[10px] font-semibold tracking-[0.15em] uppercase">
               Comparison
             </p>

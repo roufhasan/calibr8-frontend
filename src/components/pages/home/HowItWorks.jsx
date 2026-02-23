@@ -42,9 +42,9 @@ export default function HowItWorks() {
           subtitle="From search to the perfect display in four steps."
         />
 
-        <div className="relative mt-14 grid grid-cols-4">
+        <div className="relative mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {/* Dashed connector line */}
-          <div className="border-border absolute top-8 right-[calc(12.5%+2rem)] left-[calc(12.5%+2rem)] h-px border-t border-dashed" />
+          <div className="border-border absolute top-8 right-[calc(11%+2rem)] left-[calc(11%+2rem)] hidden h-px border-t border-dashed lg:block" />
 
           {steps.map((step) => (
             <WorkDescribeCard key={step.number} step={step} />

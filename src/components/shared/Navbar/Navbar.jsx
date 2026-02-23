@@ -1,6 +1,5 @@
 import { navLinks } from "@/utils/constants";
 import Link from "next/link";
-import { Search, Triangle } from "lucide-react";
 import Container from "../Container";
 import {
   InputGroup,
@@ -8,12 +7,14 @@ import {
   InputGroupInput,
 } from "@/components/ui/input-group";
 import { Kbd } from "@/components/ui/kbd";
+import MobileNav from "./MobileNav";
+import { Search, Triangle } from "lucide-react";
 
 export default function Navbar() {
   return (
     <header className="border-b">
       <Container>
-        <nav className="flex items-center justify-between gap-8 py-4">
+        <nav className="relative flex items-center justify-between gap-8 py-4">
           {/* logo */}
           <Link
             href="/"
@@ -29,7 +30,7 @@ export default function Navbar() {
           </Link>
 
           {/* menu */}
-          <ul className="flex flex-1 items-center justify-center gap-8">
+          <ul className="hidden flex-1 items-center justify-center gap-8 md:flex">
             {navLinks.map((link) => (
               <li key={link.id}>
                 <Link
@@ -43,7 +44,7 @@ export default function Navbar() {
           </ul>
 
           {/* search field */}
-          <div className="shrink-0">
+          <div className="hidden shrink-0 md:block">
             <InputGroup>
               <InputGroupAddon>
                 <Search className="size-4" />
@@ -58,6 +59,9 @@ export default function Navbar() {
               </InputGroupAddon>
             </InputGroup>
           </div>
+
+          {/* mobile menu */}
+          <MobileNav />
         </nav>
       </Container>
     </header>
