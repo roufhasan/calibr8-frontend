@@ -1,4 +1,4 @@
-import { DM_Serif_Display, Geist } from "next/font/google";
+import { Geist, Space_Grotesk } from "next/font/google";
 import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar/Navbar";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,10 +9,10 @@ const geist = Geist({
   subsets: ["latin"],
 });
 
-const instrument = DM_Serif_Display({
-  variable: "--font-instrument-serif",
+const space_grotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata = {
@@ -23,7 +23,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${geist.variable} ${instrument.variable}`}>
+    <html lang="en" className={`${geist.variable} ${space_grotesk.variable}`}>
       <body className="font-mono antialiased">
         <TooltipProvider>
           <Navbar />

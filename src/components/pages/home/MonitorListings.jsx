@@ -1,7 +1,7 @@
 import MonitorCard from "@/components/card/MonitorCard";
 import Container from "@/components/shared/Container";
-import { monitors } from "@/utils/constants";
 import SectionHeader from "@/components/shared/SectionHeader";
+import { monitors } from "@/utils/constants/monitors";
 
 export default function MonitorListings() {
   return (

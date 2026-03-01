@@ -32,7 +32,7 @@ export default function Hero() {
             </div>
 
             {/* title */}
-            <h1 className="font-instrument text-5xl md:text-6xl">
+            <h1 className="text-5xl font-semibold md:text-6xl">
               Find your perfect monitor with verified{" "}
               <span className="from-primary to-chart-2 bg-linear-to-r bg-clip-text text-transparent">
                 color accuracy

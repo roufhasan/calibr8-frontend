@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { certificationLogos } from "@/utils/certificationLogos";
 import { getDeltaEColor } from "@/utils/getDeltaEColor";
 import { Scale } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function MonitorCard({ monitor }) {
+export default function MonitorCard({ monitor, className = "" }) {
   const {
     brand,
     name,
@@ -22,15 +23,18 @@ export default function MonitorCard({ monitor }) {
   } = monitor;
 
   return (
-    <div className="group bg-card min-w-xs overflow-hidden rounded border">
+    <div
+      className={cn("group bg-card overflow-hidden rounded border", className)}
+    >
       <Link
         href={`/monitors/${brand}/${slug}`}
         className="relative block aspect-square overflow-hidden"
       >
         <Image
+          fill
           src={imageUrl}
           alt={name}
-          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 25vw"
           className="object-cover transition-transform duration-300 ease-linear group-hover:scale-105"
         />
       </Link>

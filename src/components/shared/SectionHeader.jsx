@@ -12,7 +12,7 @@ export default function SectionHeader({
   return (
     <div className={cn("flex items-end justify-between", className)}>
       <div className="space-y-1.5">
-        <h2 className="font-instrument text-3xl">{title}</h2>
+        <h2 className="text-3xl font-semibold">{title}</h2>
         {subtitle && (
           <p className="text-muted-foreground text-sm">{subtitle}</p>
         )}

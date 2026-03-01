@@ -27,9 +27,10 @@ export default function FeaturedCompare() {
           {/* Image */}
           <div className="relative h-full min-h-80 overflow-hidden rounded">
             <Image
+              fill
               src="https://images.unsplash.com/photo-1635684543899-ebd8d7e77825?q=80&w=1528&auto=format&fit=crop"
               alt="monitor"
-              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
           </div>
@@ -40,7 +41,7 @@ export default function FeaturedCompare() {
               Comparison
             </p>
 
-            <h2 className="font-instrument mt-4 text-2xl">
+            <h2 className="mt-4 text-2xl font-semibold">
               Dell U2723QE vs LG 27GP950-B: Which Pro Monitor is Worth Your
               Money?
             </h2>

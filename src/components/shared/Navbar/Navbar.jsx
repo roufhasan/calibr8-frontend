@@ -1,3 +1,4 @@
+"use client";
 import { navLinks } from "@/utils/constants";
 import Link from "next/link";
 import Container from "../Container";
@@ -9,10 +10,31 @@ import {
 import { Kbd } from "@/components/ui/kbd";
 import MobileNav from "./MobileNav";
 import { Search, Triangle } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < lastScrollY || currentScrollY < 100) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <header className="border-b">
+    <header className="bg-card sticky top-0 z-50 border-b">
       <Container>
         <nav className="relative flex items-center justify-between gap-8 py-4">
           {/* logo */}

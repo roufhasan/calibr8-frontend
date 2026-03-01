@@ -13,9 +13,10 @@ export default function CalmanTestCard({ monitor }) {
         className="relative block aspect-video overflow-hidden"
       >
         <Image
+          fill
           src={image}
           alt={`${brand} ${model}`}
-          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover transition-transform duration-300 ease-linear group-hover:scale-105"
         />
       </Link>
@@ -43,7 +44,7 @@ export default function CalmanTestCard({ monitor }) {
           <p className={`font-semibold ${getDeltaEColor(metrics.deltaE)}`}>
             ΔE <span>{metrics.deltaE}</span>
           </p>
-          <div class="bg-border inline-block h-3.5 w-px"></div>
+          <div className="bg-border inline-block h-3.5 w-px"></div>
           <p>sRGB {metrics.sRGB}%</p>
         </div>
       </div>

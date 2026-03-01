@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { certificationLogos } from "@/utils/certificationLogos";
 import Container from "@/components/shared/Container";
+import ColorChart from "./ColorChart";
 
 export default function Hero({ monitor }) {
   const { brand, certification, name, panel, price, colorMetrics, images } =
@@ -16,7 +17,6 @@ export default function Hero({ monitor }) {
   return (
     <section className="py-12">
       <Container className="flex flex-col items-start gap-8 md:flex-row md:gap-12">
-        {/* Gallery — fixed width */}
         <div className="flex w-full shrink-0 flex-col gap-3 md:max-w-sm">
           <div className="bg-muted relative aspect-square w-full overflow-hidden rounded">
             <Image
@@ -43,8 +43,7 @@ export default function Hero({ monitor }) {
           </div>
         </div>
 
-        {/* Details — takes remaining space */}
-        <div className="flex flex-1 flex-col gap-4">
+        <div className="flex flex-1 flex-col gap-3">
           <div className="flex items-center gap-2">
             <span className="text-muted-foreground rounded border px-1.5 py-0.5 text-xs font-medium tracking-wider uppercase">
               {brand}
@@ -66,7 +65,17 @@ export default function Hero({ monitor }) {
 
           <h1 className="text-2xl leading-tight font-bold">{name}</h1>
 
-          <div className="grid grid-cols-1 gap-y-2 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-2">
+          <h2 className="text-xl font-semibold">${price}</h2>
+
+          <Button
+            size="sm"
+            variant="outline"
+            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground w-fit rounded"
+          >
+            <GitCompare /> Add to Compare
+          </Button>
+
+          <div className="mt-2 grid grid-cols-1 gap-y-2 sm:grid-cols-2 sm:gap-x-8">
             <div className="flex items-center gap-2">
               <span className="text-muted-foreground w-16 shrink-0 text-xs">
                 Size
@@ -105,19 +114,9 @@ export default function Hero({ monitor }) {
             </div>
           </div>
 
-          <h2 className="text-xl font-semibold">${price}</h2>
+          <ColorChart colorMetrics={colorMetrics} />
 
-          <div>
-            <Button
-              size="sm"
-              variant="outline"
-              className="text-muted-foreground rounded"
-            >
-              <GitCompare /> Add to Compare
-            </Button>
-          </div>
-
-          <Separator />
+          <Separator className="my-1" />
 
           <div className="flex h-4 items-center gap-3">
             <div className="flex items-center gap-2">

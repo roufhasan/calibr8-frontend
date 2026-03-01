@@ -1,7 +1,7 @@
 import MonitorCard from "@/components/card/MonitorCard";
 import Container from "@/components/shared/Container";
 import SectionDivider from "@/components/shared/SectionDivider";
-import { monitors } from "@/utils/constants";
+import { monitors } from "@/utils/constants/monitors";
 
 export default function SimilarMonitors({ monitor }) {
   return (
@@ -11,7 +11,11 @@ export default function SimilarMonitors({ monitor }) {
 
         <div className="flex items-center gap-4 overflow-x-scroll">
           {monitors.map((monitor) => (
-            <MonitorCard key={monitor.id} monitor={monitor} />
+            <MonitorCard
+              key={monitor.id}
+              className="min-w-xs"
+              monitor={monitor}
+            />
           ))}
         </div>
       </Container>

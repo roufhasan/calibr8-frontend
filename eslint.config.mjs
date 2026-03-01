@@ -11,6 +11,18 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    rules: {
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector:
+            "JSXElement[openingElement.name.name='button'] JSXElement[openingElement.name.name='p']",
+          message: "Do not use <p> inside <button>. Use <span> instead.",
+        },
+      ],
+    },
+  },
 ]);
 
 export default eslintConfig;
