@@ -21,7 +21,7 @@ const stats = [
 
 export default function FeaturedCompare() {
   return (
-    <section className="py-16">
+    <section className="py-10 lg:py-16">
       <Container>
         <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2 md:gap-0">
           {/* Image */}
@@ -74,7 +74,7 @@ export default function FeaturedCompare() {
             </div>
 
             <Button asChild className="mt-6 w-fit capitalize">
-              <Link href="/">
+              <Link href="/compare?monitors=dell-u2723qe,lg-27gp950-b">
                 See full comparison <ArrowRight />
               </Link>
             </Button>

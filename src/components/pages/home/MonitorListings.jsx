@@ -5,13 +5,13 @@ import { monitors } from "@/utils/constants/monitors";
 
 export default function MonitorListings() {
   return (
-    <section className="py-16">
+    <section className="py-10 lg:py-16">
       <Container>
         <SectionHeader
           title="Top Rated Color Accurate Monitors"
-          subtitle="Professionally tested with Portrait Displays Calman software."
+          subtitle="Professionally tested with Calman & Spyder. Real measurements, not manufacturer claims."
           label="Browse all"
-          href="/"
+          href="/monitors"
         />
 
         {/* Monitor Grid */}

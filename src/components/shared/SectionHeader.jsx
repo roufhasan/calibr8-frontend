@@ -10,17 +10,24 @@ export default function SectionHeader({
   href,
 }) {
   return (
-    <div className={cn("flex items-end justify-between", className)}>
-      <div className="space-y-1.5">
-        <h2 className="text-3xl font-semibold">{title}</h2>
+    <div
+      className={cn(
+        "flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between",
+        className,
+      )}
+    >
+      <div>
+        <h2 className="text-2xl font-semibold">{title}</h2>
         {subtitle && (
-          <p className="text-muted-foreground text-sm">{subtitle}</p>
+          <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">
+            {subtitle}
+          </p>
         )}
       </div>
       {label && (
         <Link
           href={href}
-          className="text-muted-foreground hover:text-foreground mb-1 flex shrink-0 items-center gap-1.5 text-sm font-medium transition-colors duration-150"
+          className="text-muted-foreground hover:text-foreground flex shrink-0 items-center gap-1.5 text-sm font-medium transition-colors duration-150 sm:mb-1"
         >
           {label}
           <ChevronRight className="size-3.5" />

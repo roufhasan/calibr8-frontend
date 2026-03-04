@@ -145,7 +145,7 @@ export const calmanTests = [
     id: "dell-u2723qe",
     brand: "Dell",
     model: "U2723QE",
-    category: "Studio Display",
+    certification: "calman",
     testDate: "2026-02-12T00:00:00.000Z",
     metrics: {
       deltaE: 0.83,
@@ -158,7 +158,7 @@ export const calmanTests = [
     id: "apple-studio-display",
     brand: "Apple",
     model: "Studio Display",
-    category: "Creative Monitor",
+    certification: "calman",
     testDate: "2026-02-08T00:00:00.000Z",
     metrics: {
       deltaE: 0.95,
@@ -171,7 +171,7 @@ export const calmanTests = [
     id: "asus-proart-pa279crv",
     brand: "ASUS",
     model: "ProArt PA279CRV",
-    category: "ProArt Monitor",
+    certification: "spyder",
     testDate: "2026-02-05T00:00:00.000Z",
     metrics: {
       deltaE: 1.12,
@@ -185,20 +185,20 @@ export const calmanTests = [
 export const trustFeatures = [
   {
     icon: MonitorCheck,
-    title: "Industry Standard Testing",
+    title: "Multi-Source Verified Data",
     description:
-      "Every monitor is measured using Portrait Displays Calman — the industry standard for display calibration used by Hollywood studios and broadcast facilities.",
+      "We collect test results from multiple trusted reviewers who use Calman and Spyder. The same tools used in professional display calibration workflows.",
   },
   {
     icon: BarChart2,
-    title: "Transparent Methodology",
+    title: "Real Measurements Only",
     description:
-      "Our full testing process is documented and publicly available. We measure Delta E, color gamut coverage, gamma accuracy, and white point consistency.",
+      "Every Delta-E, color gamut and gamma value comes from published calibration tests. Never from manufacturer spec sheets or estimated figures.",
   },
   {
     icon: RefreshCw,
-    title: "Regularly Updated",
+    title: "Sourced & Attributed",
     description:
-      "Monitors are retested after firmware updates that affect image processing. Our data stays current so your decisions are based on the latest performance.",
+      "Each result links back to its original test source. You can verify the data yourself. We don't ask you to take our word for it.",
   },
 ];

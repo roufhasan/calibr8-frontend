@@ -16,8 +16,6 @@ export default function Home() {
       <Category />
       <WhyTrustUs />
       <HowItWorks />
-      {/* TODO: move the DataSource component to methodology page */}
-      {/* <DataSource />  */}
     </>
   );
 }

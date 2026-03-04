@@ -32,7 +32,7 @@ export default function MobileNav() {
         onClick={handleToggle}
         size="icon"
         variant="ghost"
-        className="md:hidden"
+        className="lg:hidden"
       >
         {isOpen ? <X /> : <Menu />}
       </Button>

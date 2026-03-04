@@ -1,10 +1,11 @@
+import { certificationLogos } from "@/utils/certificationLogos";
 import { formatDate } from "@/utils/date";
 import { getDeltaEColor } from "@/utils/getDeltaEColor";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function CalmanTestCard({ monitor }) {
-  const { category, model, brand, image, metrics, id, testDate } = monitor;
+export default function LatestTestCard({ monitor }) {
+  const { model, brand, image, metrics, id, testDate, certification } = monitor;
 
   return (
     <div className="group bg-card overflow-hidden rounded border">
@@ -24,10 +25,17 @@ export default function CalmanTestCard({ monitor }) {
       {/* content */}
       <div className="border-t px-4 py-3.5">
         <div className="flex items-center justify-between gap-x-2">
-          <p className="text-muted-foreground w-fit rounded text-[10px] font-medium tracking-wider uppercase">
-            {category}
-          </p>
-
+          <div className="inline-flex items-center gap-1">
+            <Image
+              src={certificationLogos[certification]}
+              alt={certification}
+              width={12}
+              height={12}
+            />
+            <p className="text-muted-foreground text-[10px] font-medium tracking-wider capitalize">
+              {certification} verified
+            </p>
+          </div>
           <p className="text-muted-foreground mt-0.5 text-[10px] font-medium tracking-wider capitalize">
             {formatDate(testDate)}
           </p>

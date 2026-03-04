@@ -5,11 +5,11 @@ import SectionHeader from "@/components/shared/SectionHeader";
 
 export default function Category() {
   return (
-    <section className="py-16">
+    <section className="py-10 lg:py-16">
       <Container>
         <SectionHeader
-          title="Find Your Display by Use Case"
-          subtitle="Every monitor tested. Every use case covered."
+          title="Browse by Use Case"
+          subtitle="Gaming, professional, ultrawide and more."
         />
 
         {/* Bento Grid */}

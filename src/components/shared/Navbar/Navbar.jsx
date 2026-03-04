@@ -52,7 +52,7 @@ export default function Navbar() {
           </Link>
 
           {/* menu */}
-          <ul className="hidden flex-1 items-center justify-center gap-8 md:flex">
+          <ul className="hidden flex-1 items-center justify-center gap-8 lg:flex">
             {navLinks.map((link) => (
               <li key={link.id}>
                 <Link
@@ -66,7 +66,7 @@ export default function Navbar() {
           </ul>
 
           {/* search field */}
-          <div className="hidden shrink-0 md:block">
+          <div className="hidden shrink-0 lg:block">
             <InputGroup>
               <InputGroupAddon>
                 <Search className="size-4" />
