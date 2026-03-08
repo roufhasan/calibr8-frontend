@@ -1,6 +1,6 @@
-import { Medal, Twitter, Youtube, Github, Triangle } from "lucide-react";
+import { Twitter, Youtube, Github } from "lucide-react";
 import Container from "./Container";
-import Link from "next/link";
+import Logo from "./Logo";
 
 export default function Footer() {
   return (
@@ -9,30 +9,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link
-              href="/"
-              className="text-primary-foreground mb-5 inline-flex shrink-0 items-center gap-1 font-sans font-bold"
-            >
-              <span className="text-2xl">C</span>
-              <Triangle
-                className="text-primary size-5"
-                strokeWidth={2}
-                fill="currentColor"
-              />
-              <span className="text-2xl tracking-[0.25em]">LIBR8</span>
-            </Link>
+            <Logo varinat="dark" />
             <p className="text-primary-foreground/50 mb-5 text-sm leading-relaxed">
               Professional monitor recommendations backed by verified Calman
               color accuracy testing. Find your perfect display with real data.
             </p>
-            <div className="flex items-center gap-2">
-              <div className="bg-warning/15 flex size-5 items-center justify-center rounded">
-                <Medal className="text-warning size-3" weight="fill" />
-              </div>
-              <span className="text-primary-foreground/40 text-xs font-medium">
-                Calman Verified Data
-              </span>
-            </div>
           </div>
 
           {/* Browse */}
@@ -112,7 +93,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-primary-foreground/10 mt-14 flex flex-col items-center justify-between gap-4 border-t pt-8 text-sm md:flex-row">
           <p className="text-primary-foreground/35">
-            © 2025 Calibr8. All rights reserved.
+            © 2026 Calibr8. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <a

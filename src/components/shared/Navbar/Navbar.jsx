@@ -9,8 +9,9 @@ import {
 } from "@/components/ui/input-group";
 import { Kbd } from "@/components/ui/kbd";
 import MobileNav from "./MobileNav";
-import { Search, Triangle } from "lucide-react";
+import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
+import Logo from "../Logo";
 
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
@@ -38,18 +39,7 @@ export default function Navbar() {
       <Container>
         <nav className="relative flex items-center justify-between gap-8 py-4">
           {/* logo */}
-          <Link
-            href="/"
-            className="inline-flex shrink-0 items-center gap-1 px-3 py-1 font-sans font-bold"
-          >
-            <span className="text-2xl">C</span>
-            <Triangle
-              className="text-primary size-5"
-              strokeWidth={2}
-              fill="currentColor"
-            />
-            <span className="text-2xl tracking-[0.25em]">LIBR8</span>
-          </Link>
+          <Logo />
 
           {/* menu */}
           <ul className="hidden flex-1 items-center justify-center gap-8 lg:flex">
