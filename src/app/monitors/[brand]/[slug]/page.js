@@ -5,6 +5,9 @@ import Specifications from "@/components/pages/monitorDetails/Specifications";
 import SimilarMonitors from "@/components/pages/monitorDetails/SimilarMonitors";
 import CompareCTA from "@/components/pages/monitorDetails/CompareCTA";
 
+// TODO: remove it after adding dynamic monitor details
+export const dynamic = "force-dynamic";
+
 const monitor = {
   brand: "LG",
   name: "LG 27GN950-B",
