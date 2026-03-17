@@ -1,9 +1,16 @@
 import MonitorCard from "@/components/card/MonitorCard";
 import Container from "@/components/shared/Container";
 import SectionHeader from "@/components/shared/SectionHeader";
-import { monitors } from "@/utils/constants/monitors";
+import logger from "@/lib/logger";
+import { getMonitors } from "@/lib/monitors";
 
-export default function MonitorListings() {
+export default async function MonitorListings() {
+  const { data: monitors, error } = await getMonitors();
+
+  console.log(monitors);
+
+  if (error) logger.error("Monitors", error);
+
   return (
     <section className="py-10 lg:py-16">
       <Container>

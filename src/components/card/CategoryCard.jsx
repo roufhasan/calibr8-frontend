@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/lib/utils"; // or wherever your cn utility is
+import { cn } from "@/lib/utils";
 
-// Define grid span classes based on index
 const getGridClasses = (index) => {
   if (index === 0 || index === 1) {
     return "md:col-span-2 md:row-span-4";
@@ -30,12 +29,14 @@ const getLayoutClasses = (index) => {
 };
 
 export default function CategoryCard({ category, index }) {
+  const { name, slug, image_url, description } = category;
+
   const layout = getLayoutClasses(index);
   const gridClass = getGridClasses(index);
 
   return (
     <Link
-      href={`/categories/${category.id}`}
+      href={`/categories/${slug}`}
       className={cn(
         "group relative overflow-hidden rounded",
         layout.padding,
@@ -44,9 +45,10 @@ export default function CategoryCard({ category, index }) {
     >
       <div className="absolute inset-0 -z-10">
         <Image
-          src={category.image}
-          alt={category.title}
           fill
+          src={image_url}
+          alt={name}
+          sizes="(max-width: 768px) 100vw, 20vw"
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent transition-opacity duration-300 group-hover:from-black/70 group-hover:via-black/30" />
@@ -59,7 +61,7 @@ export default function CategoryCard({ category, index }) {
               layout.titleSize,
             )}
           >
-            {category.title}
+            {name}
           </h3>
           <p
             className={cn(
@@ -67,7 +69,7 @@ export default function CategoryCard({ category, index }) {
               layout.descSize,
             )}
           >
-            {category.description}
+            {description}
           </p>
         </div>
       </div>

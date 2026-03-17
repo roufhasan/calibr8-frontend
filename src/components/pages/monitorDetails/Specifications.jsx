@@ -32,7 +32,7 @@ export default function Specifications({ monitor }) {
               key={i}
               className={cn(
                 "flex items-center justify-between px-3 py-2.5 text-sm first:border-t last:border-b",
-                i % 2 === 0 ? "bg-secondary/50" : "bg-card",
+                i % 2 === 0 ? "bg-secondary/50" : "",
               )}
             >
               <span className="text-muted-foreground">{spec.label}</span>

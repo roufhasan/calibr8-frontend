@@ -1,13 +1,4 @@
-import {
-  Gamepad2,
-  Briefcase,
-  Monitor,
-  Laptop,
-  Tv,
-  MonitorCheck,
-  BarChart2,
-  RefreshCw,
-} from "lucide-react";
+import { MonitorCheck, BarChart2, RefreshCw } from "lucide-react";
 
 export const navLinks = [
   {
@@ -47,59 +38,6 @@ export const quickSearchLinks = [
     id: "ultra",
     label: "Ultrawide",
     href: "/",
-  },
-];
-
-export const categories = [
-  {
-    id: "gaming",
-    icon: Gamepad2,
-    title: "Gaming",
-    description: "Fast panels, low latency",
-    gradient: "from-purple-500/10 to-pink-500/10",
-    hoverGradient: "hover:from-purple-500/20 hover:to-pink-500/20",
-    image:
-      "https://images.unsplash.com/photo-1588626082526-e858d0109d94?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    id: "professional",
-    icon: Briefcase,
-    title: "Professional",
-    description: "Color critical work",
-    gradient: "from-blue-500/10 to-cyan-500/10",
-    hoverGradient: "hover:from-blue-500/20 hover:to-cyan-500/20",
-    image:
-      "https://images.unsplash.com/photo-1693773852578-65cf594b62dd?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    id: "ultrawide",
-    icon: Monitor,
-    title: "Ultrawide",
-    description: "Immersive 21:9+",
-    gradient: "from-orange-500/10 to-red-500/10",
-    hoverGradient: "hover:from-orange-500/20 hover:to-red-500/20",
-    image:
-      "https://images.unsplash.com/photo-1723882620559-96bc6eef6603?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    id: "laptops",
-    icon: Laptop,
-    title: "Laptops",
-    description: "Built-in displays",
-    gradient: "from-green-500/10 to-emerald-500/10",
-    hoverGradient: "hover:from-green-500/20 hover:to-emerald-500/20",
-    image:
-      "https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1120&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    id: "tvs",
-    icon: Tv,
-    title: "TVs",
-    description: "Big screen accuracy",
-    gradient: "from-indigo-500/10 to-violet-500/10",
-    hoverGradient: "hover:from-indigo-500/20 hover:to-violet-500/20",
-    image:
-      "https://images.unsplash.com/flagged/photo-1572609239482-d3a83f976aa0?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
 

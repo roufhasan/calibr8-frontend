@@ -8,18 +8,19 @@ import Link from "next/link";
 
 export default function MonitorCard({ monitor, className = "" }) {
   const {
-    brand,
-    name,
-    price,
-    imageUrl,
-    screenSize,
-    resolution,
-    refreshRate,
-    panelType,
-    certification,
     slug,
-    deltaE,
+    model,
+    brand,
+    thumbnail_url,
+    size,
+    panel,
+    resolution_w,
+    resolution_h,
+    refresh_rate,
+    delta_e_avg,
     srgb,
+    price,
+    data_source,
   } = monitor;
 
   return (
@@ -32,8 +33,8 @@ export default function MonitorCard({ monitor, className = "" }) {
       >
         <Image
           fill
-          src={imageUrl}
-          alt={name}
+          src={thumbnail_url}
+          alt={model}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 25vw"
           className="object-cover transition-transform duration-300 ease-linear group-hover:scale-105"
         />
@@ -47,16 +48,16 @@ export default function MonitorCard({ monitor, className = "" }) {
             {brand}
           </p>
 
-          {certification && (
+          {data_source && (
             <div className="inline-flex items-center gap-1 rounded">
               <Image
-                src={certificationLogos[certification]}
-                alt={certification}
+                src={certificationLogos[data_source]}
+                alt={data_source}
                 width={14}
                 height={14}
               />
               <p className="text-muted-foreground text-[11px] font-medium tracking-wider capitalize">
-                {certification} verified
+                {data_source} verified
               </p>
             </div>
           )}
@@ -66,22 +67,22 @@ export default function MonitorCard({ monitor, className = "" }) {
           href={`/monitors/${brand}/${slug}`}
           className="text-foreground mt-1 block text-base leading-snug font-semibold hover:underline"
         >
-          {name}
+          {model}
         </Link>
 
         <div className="text-muted-foreground mt-3 space-y-2 text-[13px]">
           <div className="flex items-center justify-between">
             <span>
-              {screenSize}&quot; • {panelType}
+              {size}&quot; • {panel}
             </span>
-            <span>{resolution}</span>
+            <span>{`${resolution_w}x${resolution_h}`}</span>
           </div>
 
           <div className="flex items-center justify-between">
-            <span>{refreshRate}Hz</span>
+            <span>{refresh_rate}Hz</span>
             <div className="flex items-center gap-2">
-              <span className={`font-semibold ${getDeltaEColor(deltaE)}`}>
-                ΔE {deltaE}
+              <span className={`font-semibold ${getDeltaEColor(delta_e_avg)}`}>
+                ΔE {delta_e_avg}
               </span>
               <div className="bg-border inline-block h-3 w-px shrink-0" />
               <span>sRGB {srgb}%</span>
