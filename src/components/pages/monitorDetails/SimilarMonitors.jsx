@@ -1,9 +1,13 @@
 import MonitorCard from "@/components/card/MonitorCard";
 import Container from "@/components/shared/Container";
 import SectionDivider from "@/components/shared/SectionDivider";
-import { monitors } from "@/utils/constants/monitors";
+import { getMonitors } from "@/lib/monitors";
 
-export default function SimilarMonitors({ monitor }) {
+export default async function SimilarMonitors() {
+  const { data: monitors, error } = await getMonitors();
+
+  if (error) logger.error("Monitors", error);
+
   return (
     <section className="py-12">
       <Container>
