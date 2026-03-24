@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { certificationLogos } from "@/utils/certificationLogos";
 import { getDeltaEColor } from "@/utils/getDeltaEColor";
 import { Scale } from "lucide-react";
+import CldImage from "@/components/ui/CldImage";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -23,20 +24,22 @@ export default function MonitorCard({ monitor, className = "" }) {
     data_source,
   } = monitor;
 
+  const details_url = `/monitors/${brand?.toLowerCase()}/${slug}`;
+
   return (
     <div
       className={cn("group bg-card overflow-hidden rounded border", className)}
     >
       <Link
-        href={`/monitors/${brand}/${slug}`}
-        className="relative block aspect-square overflow-hidden"
+        href={details_url}
+        className="relative block aspect-square overflow-hidden bg-white"
       >
-        <Image
-          fill
+        <CldImage
           src={thumbnail_url}
           alt={model}
+          fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 25vw"
-          className="object-cover transition-transform duration-300 ease-linear group-hover:scale-105"
+          className="object-contain transition-transform duration-300 ease-linear group-hover:scale-105"
         />
       </Link>
 
@@ -64,7 +67,7 @@ export default function MonitorCard({ monitor, className = "" }) {
         </div>
 
         <Link
-          href={`/monitors/${brand}/${slug}`}
+          href={details_url}
           className="text-foreground mt-1 block text-base leading-snug font-semibold hover:underline"
         >
           {model}
@@ -91,7 +94,7 @@ export default function MonitorCard({ monitor, className = "" }) {
         </div>
 
         <div className="mt-4 flex items-center justify-between border-t pt-4">
-          <p className="text-lg font-bold">${price}</p>
+          <p className="text-lg font-bold">৳{price}</p>
           <Button size="sm" variant="secondary" className="rounded text-xs">
             <Scale /> <span>Compare</span>
           </Button>

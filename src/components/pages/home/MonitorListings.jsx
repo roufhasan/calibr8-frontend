@@ -7,8 +7,6 @@ import { getMonitors } from "@/lib/monitors";
 export default async function MonitorListings() {
   const { data: monitors, error } = await getMonitors();
 
-  console.log(monitors);
-
   if (error) logger.error("Monitors", error);
 
   return (

@@ -6,14 +6,28 @@ import {
   PolarGrid,
   PolarAngleAxis,
   ResponsiveContainer,
+  Tooltip,
 } from "recharts";
 
-export default function ColorChart({ colorMetrics }) {
+function CustomTooltip({ active, payload }) {
+  if (!active || !payload?.length) return null;
+  const { metric, value } = payload[0].payload;
+  if (value == null) return null;
+
+  return (
+    <div className="bg-card border-border border px-2.5 py-1.5 font-mono text-xs">
+      <span className="text-muted-foreground">{metric}: </span>
+      <span className="text-foreground font-medium">{value}%</span>
+    </div>
+  );
+}
+
+export default function ColorChart({ monitor }) {
   const data = [
-    { metric: "sRGB", value: colorMetrics.srgb },
-    { metric: "DCI-P3", value: colorMetrics.dciP3 },
-    { metric: "Adobe RGB", value: colorMetrics.adobeRgb },
-    { metric: "NTSC", value: colorMetrics.ntsc },
+    { metric: "sRGB", value: monitor.srgb },
+    { metric: "DCI-P3", value: monitor.dci_p3 },
+    { metric: "Adobe RGB", value: monitor.adobe_rgb },
+    { metric: "NTSC", value: monitor.ntsc },
   ];
 
   return (
@@ -32,6 +46,7 @@ export default function ColorChart({ colorMetrics }) {
               fontFamily: "var(--font-sans)",
             }}
           />
+          <Tooltip content={<CustomTooltip />} />
           <Radar
             dataKey="value"
             fill="var(--primary)"
