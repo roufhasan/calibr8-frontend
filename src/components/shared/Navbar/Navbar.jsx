@@ -1,19 +1,22 @@
 "use client";
-import { navLinks } from "@/utils/constants";
+import { useEffect, useState } from "react";
+import { Search } from "lucide-react";
 import Link from "next/link";
 import Container from "../Container";
+import MobileNav from "./MobileNav";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
 import { Kbd } from "@/components/ui/kbd";
-import MobileNav from "./MobileNav";
-import { Search } from "lucide-react";
-import { useEffect, useState } from "react";
+import { navLinks } from "@/utils/constants";
 import Logo from "../Logo";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -35,9 +38,9 @@ export default function Navbar() {
   }, [lastScrollY]);
 
   return (
-    <header className="bg-card sticky top-0 z-50 border-b">
+    <header className="bg-card sticky top-0 z-50">
       <Container>
-        <nav className="relative flex items-center justify-between gap-8 py-4">
+        <nav className="relative flex items-center justify-between gap-8 py-2">
           {/* logo */}
           <Logo />
 
@@ -47,7 +50,10 @@ export default function Navbar() {
               <li key={link.id}>
                 <Link
                   href={link.href}
-                  className="hover:text-primary text-sm font-medium transition-colors"
+                  className={cn(
+                    "hover:text-primary text-xs transition-colors",
+                    pathname === link.href ? "text-primary" : "",
+                  )}
                 >
                   {link.label}
                 </Link>
@@ -57,17 +63,17 @@ export default function Navbar() {
 
           {/* search field */}
           <div className="hidden shrink-0 lg:block">
-            <InputGroup>
+            <InputGroup className="h-8">
               <InputGroupAddon>
-                <Search className="size-4" />
+                <Search className="size-3" />
               </InputGroupAddon>
               <InputGroupInput
                 placeholder="Search monitors..."
-                className="text-sm"
+                className="text-xs md:text-xs"
               />
               <InputGroupAddon align="inline-end">
-                <Kbd className="text-xs">⌘</Kbd>
-                <Kbd className="text-xs">K</Kbd>
+                <Kbd>⌘</Kbd>
+                <Kbd>K</Kbd>
               </InputGroupAddon>
             </InputGroup>
           </div>

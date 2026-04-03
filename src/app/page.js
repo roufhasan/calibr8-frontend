@@ -1,21 +1,21 @@
 import Category from "@/components/pages/home/Category";
 import FeaturedCompare from "@/components/pages/home/FeaturedCompare";
-import HowItWorks from "@/components/pages/home/HowItWorks";
 import Hero from "@/components/pages/home/Hero";
 import LatestTests from "@/components/pages/home/LatestTests";
-import MonitorListings from "@/components/pages/home/MonitorListings";
-import WhyTrustUs from "@/components/pages/home/WhyTrustUs";
+import TopRatedMonitors from "@/components/pages/home/TopRatedMonitors";
+import Methodology from "@/components/pages/home/Methodology";
+import Process from "@/components/pages/home/Process";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <MonitorListings />
+      <TopRatedMonitors />
       <LatestTests />
       <FeaturedCompare />
       <Category />
-      <WhyTrustUs />
-      <HowItWorks />
+      <Methodology />
+      <Process />
     </>
   );
 }

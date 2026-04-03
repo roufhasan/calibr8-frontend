@@ -39,7 +39,7 @@ export default function MobileNav() {
 
       {/* dropdown menu */}
       <Container
-        className={`bg-background fixed top-18.25 left-0 z-50 h-[calc(100dvh-73px)] w-dvw ${isOpen ? "block" : "hidden"}`}
+        className={`bg-background fixed top-13 left-0 z-50 h-[calc(100dvh-52px)] w-dvw ${isOpen ? "block" : "hidden"}`}
       >
         <div className="py-4">
           <InputGroup className="rounded-none border-0 border-b">

@@ -2,6 +2,11 @@ import { MonitorCheck, BarChart2, RefreshCw } from "lucide-react";
 
 export const navLinks = [
   {
+    id: "home",
+    label: "Home",
+    href: "/",
+  },
+  {
     id: "monitors",
     label: "Monitors",
     href: "/monitors",
@@ -77,66 +82,47 @@ export const stepsData = [
   },
 ];
 
-// latest calman tests data
-export const calmanTests = [
+export const methodologies = [
   {
-    id: "dell-u2723qe",
-    brand: "Dell",
-    model: "U2723QE",
-    certification: "calman",
-    testDate: "2026-02-12T00:00:00.000Z",
-    metrics: {
-      deltaE: 0.83,
-      sRGB: 99.9,
-    },
-    image:
-      "https://images.unsplash.com/photo-1543336472-fcf478c443db?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    label: "The standard",
+    title: "CIE-based colour measurement",
+    description:
+      "Every value — ΔE2000, sRGB, DCI-P3, gamma — is grounded in CIE 1931 colorimetry. The same standard used by display manufacturers, film studios and calibration labs worldwide.",
   },
   {
-    id: "apple-studio-display",
-    brand: "Apple",
-    model: "Studio Display",
-    certification: "calman",
-    testDate: "2026-02-08T00:00:00.000Z",
-    metrics: {
-      deltaE: 0.95,
-      sRGB: 99.7,
-    },
-    image:
-      "https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?q=80&w=1465&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    label: "The reviewers",
+    title: "Measured, not just watched",
+    description:
+      "We only index data from reviewers who publish instrument-based results using Calman or Spyder. Opinion is theirs. The numbers are independently verifiable.",
   },
   {
-    id: "asus-proart-pa279crv",
-    brand: "ASUS",
-    model: "ProArt PA279CRV",
-    certification: "spyder",
-    testDate: "2026-02-05T00:00:00.000Z",
-    metrics: {
-      deltaE: 1.12,
-      sRGB: 99.5,
-    },
-    image:
-      "https://images.unsplash.com/photo-1528109901743-12b16e05eedf?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    label: "The attribution",
+    title: "Every number has a name behind it",
+    description:
+      "Each data point links back to its source review. Full credit, always. We exist because of the people who do the testing — that's not a footnote, it's the foundation.",
   },
 ];
 
-export const trustFeatures = [
+export const processSteps = [
   {
-    icon: MonitorCheck,
-    title: "Multi-Source Verified Data",
+    label: "Search",
+    step: "01",
+    title: "Filter by what actually matters",
     description:
-      "We collect test results from multiple trusted reviewers who use Calman and Spyder. The same tools used in professional display calibration workflows.",
+      "Search by model, brand, use case or budget. Real filters — panel type, resolution, refresh rate and colour gamut coverage. Not marketing categories.",
   },
   {
-    icon: BarChart2,
-    title: "Real Measurements Only",
+    label: "Read",
+    step: "02",
+    title: "Read the numbers, not the claims",
     description:
-      "Every Delta-E, color gamut and gamma value comes from published calibration tests. Never from manufacturer spec sheets or estimated figures.",
+      "Every monitor page shows verified ΔE2000, sRGB and DCI-P3 values from Calman and Spyder tests — sourced from reviewers who measured it, original review linked.",
   },
   {
-    icon: RefreshCw,
-    title: "Sourced & Attributed",
+    label: "Decide",
+    step: "03",
+    title: "Compare side by side, then decide",
     description:
-      "Each result links back to its original test source. You can verify the data yourself. We don't ask you to take our word for it.",
+      "Add any monitors to the comparison table. All their measured data in one place — choosing between numbers, not between which reviewer you watched last.",
   },
 ];

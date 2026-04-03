@@ -13,6 +13,8 @@ export const monitorCardFields = `
     refresh_rate,
     delta_e_avg,
     srgb,
+    dci_p3,
+    adobe_rgb,
     price,
     data_source`;
 

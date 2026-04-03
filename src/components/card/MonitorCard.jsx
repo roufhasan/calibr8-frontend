@@ -6,6 +6,7 @@ import { Scale } from "lucide-react";
 import CldImage from "@/components/ui/CldImage";
 import Image from "next/image";
 import Link from "next/link";
+import { formatBDT } from "@/utils/formatBDT";
 
 export default function MonitorCard({ monitor, className = "" }) {
   const {
@@ -32,7 +33,7 @@ export default function MonitorCard({ monitor, className = "" }) {
     >
       <Link
         href={details_url}
-        className="relative block aspect-square overflow-hidden bg-white"
+        className="bg-muted relative block h-72 overflow-hidden"
       >
         <CldImage
           src={thumbnail_url}
@@ -94,8 +95,8 @@ export default function MonitorCard({ monitor, className = "" }) {
         </div>
 
         <div className="mt-4 flex items-center justify-between border-t pt-4">
-          <p className="text-lg font-bold">৳{price}</p>
-          <Button size="sm" variant="secondary" className="rounded text-xs">
+          <p className="text-lg font-bold">{formatBDT(price)}</p>
+          <Button size="sm" variant="outline">
             <Scale /> <span>Compare</span>
           </Button>
         </div>

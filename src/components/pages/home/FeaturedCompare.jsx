@@ -1,83 +1,141 @@
-import Container from "@/components/shared/Container";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Container from "@/components/shared/Container";
+import SectionCtaBtn from "@/components/shared/SectionCtaBtn";
 import Link from "next/link";
 
-const stats = [
-  {
-    name: "Dell U2723QE",
-    de: "1.57",
-    srgb: "97.6%",
-    price: "$819",
-  },
-  {
-    name: "LG 27GP950-B",
-    de: "0.83",
-    srgb: "99.9%",
-    price: "$799",
-  },
-];
+const monitorA = {
+  name: "Dell U2723QE",
+  de: "1.57",
+  srgb: "97.6%",
+  price: "$819",
+};
+
+const monitorB = {
+  name: "LG 27GP950-B",
+  de: "0.83",
+  srgb: "99.9%",
+  price: "$799",
+  winner: true,
+};
 
 export default function FeaturedCompare() {
   return (
     <section className="py-10 lg:py-16">
       <Container>
-        <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2 md:gap-0">
-          {/* Image */}
-          <div className="relative h-full min-h-80 overflow-hidden rounded">
+        {/* section heading */}
+        <div>
+          <div className="text-muted-foreground text-[9px] tracking-[0.16em] uppercase">
+            Featured Comparison
+          </div>
+
+          <h2 className="my-1.5 font-sans text-[26px] leading-[1.1] font-extrabold tracking-[-0.5px] md:text-[28px]">
+            Heade-to-head. <span className="text-primary">Data decides.</span>
+          </h2>
+        </div>
+
+        {/* grid container */}
+        <div className="mt-6 grid grid-cols-1 overflow-hidden rounded md:grid-cols-2">
+          {/* left side image */}
+          <div className="relative min-h-72">
             <Image
               fill
               src="https://images.unsplash.com/photo-1635684543899-ebd8d7e77825?q=80&w=1528&auto=format&fit=crop"
-              alt="monitor"
+              alt="Dell U2723QE vs LG 27GP950-B"
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
+
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+              <div className="bg-foreground text-primary-foreground border-border/20 z-10 flex size-9 items-center justify-center border font-sans text-xs font-extrabold">
+                VS
+              </div>
+              <div className="bg-border/20 absolute top-0 bottom-0 left-1/2 w-0.5" />
+            </div>
           </div>
 
-          {/* Content */}
-          <div className="flex flex-col justify-center gap-0 md:p-10">
-            <p className="text-muted-foreground text-[10px] font-semibold tracking-[0.15em] uppercase">
-              Comparison
-            </p>
+          {/* right side content */}
+          <div className="bg-foreground border-l-primary relative flex flex-col justify-between gap-8 overflow-hidden p-7 md:border-l-2">
+            <span
+              className="text-primary-foreground pointer-events-none absolute -right-2 -bottom-4 font-sans text-[80px] leading-none font-extrabold tracking-[-3px] opacity-[0.1] select-none"
+              aria-hidden="true"
+            >
+              VS
+            </span>
 
-            <h2 className="mt-4 text-2xl font-semibold">
-              Dell U2723QE vs LG 27GP950-B: Which Pro Monitor is Worth Your
-              Money?
-            </h2>
+            <div className="relative z-10">
+              <div className="text-primary text-[9px] font-medium tracking-[0.16em] uppercase">
+                Head-to-head · Pro monitors
+              </div>
 
-            <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-              Both monitors claim professional-grade color accuracy, but our
-              Calman testing reveals one clear winner for color-critical work.
-              We break down the $50 price difference and whether the specs
-              actually matter.
-            </p>
+              <Link
+                href="/compare?monitors=dell-u2723qe,lg-27gp950-b"
+                className="text-primary-foreground mt-2.5 inline-block font-sans text-[20px] leading-tight font-extrabold tracking-[-0.4px] hover:underline"
+              >
+                Dell U2723QE vs
+                <br />
+                LG 27GP950-B
+              </Link>
 
-            {/* Monitor Stats */}
-            <div className="mt-6 space-y-3 border-t pt-5">
-              {stats.map((monitor) => (
-                <div key={monitor.name} className="flex items-center gap-8">
-                  <span className="w-32 shrink-0 text-xs font-semibold">
-                    {monitor.name}
-                  </span>
-                  <div className="text-muted-foreground flex items-center gap-2 text-xs">
-                    <span className="font-semibold text-emerald-700">
-                      ΔE {monitor.de}
+              {/* monitor rows */}
+              <div className="mt-5 flex flex-col gap-1.5 border-t border-[#3A3228] pt-3">
+                {[monitorA, monitorB].map((monitor) => (
+                  <div
+                    key={monitor.name}
+                    className={`grid grid-cols-[1fr_auto] items-center gap-3 p-2 ${
+                      monitor.winner
+                        ? "border-primary border-l-2 bg-[#2E2418]"
+                        : ""
+                    }`}
+                  >
+                    <span className="text-primary-foreground text-[11px] font-medium">
+                      {monitor.name}
                     </span>
-                    <span className="bg-border inline-block h-3 w-px" />
-                    <span>sRGB {monitor.srgb}</span>
-                    <span className="bg-border inline-block h-3 w-px" />
-                    <span className="font-medium">{monitor.price}</span>
+                    <div className="space-x-3">
+                      <span
+                        className={`text-[10px] font-medium ${
+                          monitor.winner
+                            ? "text-primary-foreground/75"
+                            : "text-primary-foreground/45"
+                        }`}
+                      >
+                        ΔE {monitor.de}
+                      </span>
+                      <span
+                        className={`text-[10px] font-medium ${
+                          monitor.winner
+                            ? "text-primary-foreground/75"
+                            : "text-primary-foreground/45"
+                        }`}
+                      >
+                        {monitor.srgb}
+                      </span>
+                      <span
+                        className={`text-[11px] font-medium ${
+                          monitor.winner
+                            ? "text-primary-foreground/75"
+                            : "text-primary-foreground/45"
+                        }`}
+                      >
+                        {monitor.price}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
-            <Button asChild className="mt-6 w-fit capitalize">
-              <Link href="/compare?monitors=dell-u2723qe,lg-27gp950-b">
-                See full comparison <ArrowRight />
-              </Link>
-            </Button>
+            {/* cta */}
+            <div className="relative z-10 flex flex-col gap-3 border-t border-[#3A3228] pt-4">
+              <p className="text-primary-foreground/45 text-[10px] leading-relaxed">
+                Better accuracy at a lower price — the data makes the case.
+              </p>
+
+              <SectionCtaBtn
+                href="/compare?monitors=dell-u2723qe,lg-27gp950-b"
+                linkLabel="See why lg wins"
+                className="text-primary-foreground/45 md:hover:text-primary-foreground"
+              />
+            </div>
           </div>
         </div>
       </Container>

@@ -1,19 +1,21 @@
-import { Geist, Space_Grotesk } from "next/font/google";
+import { Fraunces, Geist_Mono } from "next/font/google";
 import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar/Navbar";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import CompareProvider from "@/provider/CompareProvider";
 import "./globals.css";
 
-const geist = Geist({
-  variable: "--font-geist-sans",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
+  weight: "variable",
+  axes: ["opsz"],
 });
 
-const space_grotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500"],
 });
 
 export const metadata = {
@@ -25,7 +27,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${geist.variable} ${space_grotesk.variable}`}>
+    <html lang="en" className={`${geistMono.variable} ${fraunces.variable}`}>
       <body className="font-mono antialiased">
         <CompareProvider>
           <TooltipProvider>
