@@ -42,7 +42,7 @@ export default function MonitorToolbar({
 
       <div className="flex items-center gap-4">
         <Select value={currentSort} onValueChange={handleSortChange}>
-          <SelectTrigger className="w-fit max-w-45 text-xs">
+          <SelectTrigger className="w-44 text-xs">
             <SelectValue placeholder="Sort by" />
           </SelectTrigger>
           <SelectContent position="popper" side="bottom" align="start">

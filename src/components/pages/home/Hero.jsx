@@ -27,7 +27,7 @@ export default function Hero() {
           <div className="flex w-full rounded-sm border">
             <Input
               type="text"
-              placeholder="Search by monitor model or brand..."
+              placeholder={`Try "BenQ MOBIUZ" or "27" IPS 4K"...`}
               className="flex-1 rounded-none rounded-l-sm border-0 px-3 text-xs md:text-xs"
             />
             <Button className="h-full shrink-0 rounded-sm rounded-l-none text-xs tracking-wider">
