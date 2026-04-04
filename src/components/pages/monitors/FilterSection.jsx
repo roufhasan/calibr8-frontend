@@ -5,16 +5,54 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Slider } from "@/components/ui/slider";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export default function FilterSection({ filter }) {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const getSliderValue = () => {
+    const param = searchParams?.get(filter.id);
+    if (!param) {
+      return Array.isArray(filter.defaultValue)
+        ? filter.defaultValue
+        : [filter.defaultValue];
+    }
+    return param.split(",").map(Number);
+  };
+
   const [isOpen, setIsOpen] = useState(filter.defaultOpen);
-  const [sliderValue, setSliderValue] = useState(
-    Array.isArray(filter.defaultValue)
-      ? filter.defaultValue
-      : [filter.defaultValue],
-  );
+  const [localSlider, setLocalSlider] = useState(getSliderValue);
 
   const toggleOpen = () => setIsOpen((prev) => !prev);
+
+  const getSelected = () => {
+    return searchParams?.get(filter.id)?.split(",").filter(Boolean) ?? [];
+  };
+
+  const toggleCheckbox = (value) => {
+    const params = new URLSearchParams(searchParams.toString());
+    const current = getSelected();
+
+    const next = current.includes(value)
+      ? current.filter((v) => v !== value)
+      : [...current, value];
+
+    next.length === 0
+      ? params.delete(filter.id)
+      : params.set(filter.id, next.join(","));
+
+    params.delete("page");
+    router.push(`${pathname}?${params.toString()}`);
+  };
+
+  const commitSlider = (value) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set(filter.id, value.join(","));
+    params.delete("page");
+    router.push(`${pathname}?${params.toString()}`);
+  };
 
   return (
     <div>
@@ -33,37 +71,40 @@ export default function FilterSection({ filter }) {
 
       {isOpen && filter.type === "checkbox" && filter.options?.length > 0 && (
         <ul className="mb-2 space-y-0.5">
-          {filter.options.map((option) => (
-            <li key={option.value}>
-              <label className="hover:bg-secondary flex w-full cursor-pointer items-center justify-between gap-2.5 rounded px-2 py-1.5 text-sm transition-colors">
-                <div className="flex items-center gap-2.5">
-                  <Checkbox id={option.value} />
-                  <span>{option.label}</span>
-                </div>
+          {filter.options.map((option) => {
+            const isChecked = getSelected().includes(option.value);
 
-                {option.hint && (
-                  <span className="text-muted-foreground ml-auto text-xs">
-                    {option.hint}
-                  </span>
-                )}
+            return (
+              <li key={option.value}>
+                <label className="hover:bg-secondary flex w-full cursor-pointer items-center justify-between gap-2.5 rounded px-2 py-1.5 text-sm transition-colors">
+                  <div className="flex items-center gap-2.5">
+                    <Checkbox
+                      id={option.value}
+                      checked={isChecked}
+                      onCheckedChange={() => toggleCheckbox(option.value)}
+                    />
+                    <span>{option.label}</span>
+                  </div>
 
-                {option.logo ? (
-                  <Image
-                    src={option.logo}
-                    alt={option.label}
-                    width={16}
-                    height={16}
-                    className="object-contain"
-                  />
-                ) : (
-                  <span
-                    className="size-2 shrink-0 rounded-full"
-                    style={{ backgroundColor: option.color }}
-                  />
-                )}
-              </label>
-            </li>
-          ))}
+                  {option.hint && (
+                    <span className="text-muted-foreground ml-auto text-xs">
+                      {option.hint}
+                    </span>
+                  )}
+
+                  {option.logo && (
+                    <Image
+                      src={option.logo}
+                      alt={option.label}
+                      width={16}
+                      height={16}
+                      className="object-contain"
+                    />
+                  )}
+                </label>
+              </li>
+            );
+          })}
         </ul>
       )}
 
@@ -71,32 +112,33 @@ export default function FilterSection({ filter }) {
       {isOpen && filter.type === "range" && (
         <div className="px-2 pt-1 pb-3">
           <Slider
-            value={sliderValue}
-            onValueChange={setSliderValue}
+            value={localSlider}
+            onValueChange={setLocalSlider}
+            onValueCommit={commitSlider}
             min={filter.min}
             max={filter.max}
             step={filter.step}
             className="w-full"
           />
           <div className="mt-2 flex items-center justify-between">
-            {sliderValue.length === 2 ? (
+            {localSlider.length === 2 ? (
               <>
                 <span className="text-muted-foreground text-xs">
                   {filter.prefix
-                    ? `${filter.unit}${sliderValue[0].toLocaleString()}`
-                    : `${filter.unit} ${sliderValue[0]}`}
+                    ? `${filter.unit}${localSlider[0].toLocaleString()}`
+                    : `${filter.unit} ${localSlider[0]}`}
                 </span>
                 <span className="text-muted-foreground text-xs">
                   {filter.prefix
-                    ? `${filter.unit}${sliderValue[1].toLocaleString()}`
-                    : `${filter.unit} ${sliderValue[1]}`}
+                    ? `${filter.unit}${localSlider[1].toLocaleString()}`
+                    : `${filter.unit} ${localSlider[1]}`}
                 </span>
               </>
             ) : (
               <span className="text-muted-foreground text-xs">
                 {filter.prefix
-                  ? `${filter.unit}${sliderValue[0].toLocaleString()}`
-                  : `${filter.unit} ${sliderValue[0]}`}
+                  ? `${filter.unit}${localSlider[0].toLocaleString()}`
+                  : `${filter.unit} ${localSlider[0]}`}
               </span>
             )}
           </div>

@@ -10,6 +10,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
+import useBodyScrollLock from "@/hooks/useBodyScrollLock";
 
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,13 +19,7 @@ export default function MobileNav() {
     setIsOpen((prev) => !prev);
   };
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [isOpen]);
+  useBodyScrollLock(isOpen);
 
   return (
     <>

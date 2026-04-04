@@ -7,39 +7,70 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { sortOptions } from "@/utils/constants/sortOptions";
-import { LayoutGrid, List } from "lucide-react";
+import { LayoutGrid, List, ListFilter } from "lucide-react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-export default function MonitorToolbar({ total = 0 }) {
+export default function MonitorToolbar({
+  isListView,
+  onOpenFilter,
+  toggleView,
+  total = 0,
+}) {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const currentSort = searchParams.get("sort") ?? "latest";
+
+  const handleSortChange = (value) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("sort", value);
+    params.delete("page");
+    router.push(`${pathname}?${params.toString()}`);
+  };
+
   return (
-    <div className="flex items-end justify-between pb-4">
-      <p className="text-muted-foreground flex-1 text-sm">
-        Showing <span className="text-foreground font-medium">{total}</span>{" "}
-        monitors
+    <div className="mb-10 flex items-end justify-between">
+      <Button onClick={onOpenFilter} className="lg:hidden">
+        <ListFilter className="size-3.5" /> Filter
+      </Button>
+
+      {/* desktop search monitors monitor quantity */}
+      <p className="text-muted-foreground hidden flex-1 text-xs lg:block">
+        Showing <span className="font-medium">{total}</span> monitors
       </p>
 
       <div className="flex items-center gap-4">
-        <Select defaultValue="price-asc">
-          <SelectTrigger className="w-45 text-sm">
+        <Select value={currentSort} onValueChange={handleSortChange}>
+          <SelectTrigger className="w-fit max-w-45 text-xs">
             <SelectValue placeholder="Sort by" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent position="popper" side="bottom" align="start">
             {sortOptions.map((option) => (
-              <SelectItem key={option.value} value={option.value}>
+              <SelectItem
+                key={option.value}
+                value={option.value}
+                className="text-xs"
+              >
                 {option.label}
               </SelectItem>
             ))}
           </SelectContent>
         </Select>
 
-        <div>
-          <Button size="icon-sm" className="rounded-l-0! rounded">
+        <div className="hidden items-center justify-center gap-2 lg:flex">
+          <Button
+            onClick={toggleView}
+            size="icon-sm"
+            variant={isListView ? "outline" : "default"}
+          >
             <LayoutGrid />
           </Button>
 
           <Button
+            onClick={toggleView}
             size="icon-sm"
-            variant="outline"
-            className="rounded-r-0! rounded"
+            variant={!isListView ? "outline" : "default"}
           >
             <List />
           </Button>

@@ -19,7 +19,7 @@ export default function CategoryCard({ category, index }) {
         getGridClasses(index),
       )}
     >
-      {/* watermark — keep it, it's fine */}
+      {/* watermark */}
       <div className="pointer-events-none absolute -right-3 -bottom-3 size-24 opacity-[0.05] transition-all duration-300 select-none group-hover:scale-[1.06] group-hover:opacity-[0.10] md:size-28">
         <Image
           src={img_url}
@@ -35,7 +35,7 @@ export default function CategoryCard({ category, index }) {
           <h3 className="text-primary text-base font-bold tracking-tight">
             {name}
           </h3>
-          {/* count directly under name, not floated right */}
+
           {count != null && (
             <p className="text-muted-foreground/60 mt-0.5 text-[10px]">
               {count}{" "}

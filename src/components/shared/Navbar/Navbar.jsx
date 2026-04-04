@@ -38,7 +38,7 @@ export default function Navbar() {
   }, [lastScrollY]);
 
   return (
-    <header className="bg-card sticky top-0 z-50">
+    <header className="bg-card sticky top-0 z-100">
       <Container>
         <nav className="relative flex items-center justify-between gap-8 py-2">
           {/* logo */}

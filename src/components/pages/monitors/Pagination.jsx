@@ -10,7 +10,7 @@ import {
 
 export default function PaginationSection() {
   return (
-    <Pagination className="mt-6">
+    <Pagination>
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious href="#" />
