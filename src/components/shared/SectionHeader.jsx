@@ -26,7 +26,7 @@ export default function SectionHeader({
               {label}
             </div>
           )}
-          <h2 className="my-1.5 font-sans text-[26px] leading-[1.1] font-extrabold tracking-[-0.5px] md:text-[28px]">
+          <h2 className="my-1.5 text-2xl leading-[1.1] font-bold tracking-[-0.5px]">
             {title}
           </h2>
           {sub && (

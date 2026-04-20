@@ -28,7 +28,7 @@ export default function FeaturedCompare() {
             Featured Comparison
           </div>
 
-          <h2 className="my-1.5 font-sans text-[26px] leading-[1.1] font-extrabold tracking-[-0.5px] md:text-[28px]">
+          <h2 className="my-1.5 text-2xl leading-[1.1] font-bold tracking-[-0.5px]">
             Heade-to-head. <span className="text-primary">Data decides.</span>
           </h2>
         </div>

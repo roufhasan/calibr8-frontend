@@ -8,6 +8,7 @@ const latestCardFields = `
     id, 
     slug, 
     model, 
+    brand,
     thumbnail_url, 
     data_source, 
     delta_e_avg, 

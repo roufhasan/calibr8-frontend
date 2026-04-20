@@ -1,5 +1,3 @@
-import { MonitorCheck, BarChart2, RefreshCw } from "lucide-react";
-
 export const navLinks = [
   {
     id: "home",
@@ -27,22 +25,22 @@ export const quickSearchLinks = [
   {
     id: "oled",
     label: "OLED Gaming",
-    href: "/",
+    href: "/monitors?panelType=oled&useCase=gaming",
   },
   {
     id: "4k",
     label: "4K Design",
-    href: "/",
+    href: "/monitors?resolution=4k&useCase=content-creation",
   },
   {
     id: "1440p",
     label: "Budget 1440p",
-    href: "/",
+    href: "/monitors?resolution=qhd&priceRange=0%2C40000",
   },
   {
     id: "ultra",
     label: "Ultrawide",
-    href: "/",
+    href: "/monitors?resolution=uwqhd",
   },
 ];
 

@@ -9,6 +9,7 @@ export default function LatestTestCard({ monitor }) {
   const {
     slug,
     model,
+    brand,
     thumbnail_url,
     data_source,
     delta_e_avg,
@@ -16,20 +17,24 @@ export default function LatestTestCard({ monitor }) {
     created_at,
   } = monitor;
 
+  const details_url = `/monitors/${brand?.toLowerCase()}/${slug}`;
+
   return (
     <div className="group bg-card overflow-hidden rounded border">
-      <Link
-        href={`/monitors/${slug}`}
-        className="bg-muted relative block aspect-video overflow-hidden"
-      >
-        <CldImage
-          fill
-          src={thumbnail_url}
-          alt={model}
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-contain transition-transform duration-300 ease-linear group-hover:scale-105"
-        />
-      </Link>
+      <div className="bg-white p-2">
+        <Link
+          href={details_url}
+          className="relative block aspect-video overflow-hidden"
+        >
+          <CldImage
+            fill
+            src={thumbnail_url}
+            alt={model}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-contain transition-transform duration-300 ease-linear group-hover:scale-105"
+          />
+        </Link>
+      </div>
 
       {/* content */}
       <div className="border-t px-4 py-3.5">
@@ -51,18 +56,28 @@ export default function LatestTestCard({ monitor }) {
         </div>
 
         <Link
-          href={`/monitors/${slug}`}
+          href={details_url}
           className="text-foreground mt-3 inline-block text-base leading-snug font-semibold hover:underline"
         >
           {model}
         </Link>
 
         <div className="text-muted-foreground mt-1.5 flex items-center gap-2 text-[13px]">
-          <p className={`font-semibold ${getDeltaEColor(delta_e_avg)}`}>
-            ΔE <span>{delta_e_avg}</span>
-          </p>
-          <div className="bg-border inline-block h-3.5 w-px"></div>
-          <p>sRGB {srgb}%</p>
+          <div className="flex items-center gap-1.5">
+            <span className="text-muted-foreground text-[11px]">ΔE</span>
+            <span className={`font-bold ${getDeltaEColor(delta_e_avg)}`}>
+              {delta_e_avg ?? "—"}
+            </span>
+          </div>
+
+          <div className="bg-border inline-block h-3.5 w-px" />
+
+          <div className="flex items-center gap-1.5">
+            <span className="text-muted-foreground text-[11px]">sRGB</span>
+            <span className="text-foreground font-semibold">
+              {srgb ? `${srgb}%` : "—"}
+            </span>
+          </div>
         </div>
       </div>
     </div>

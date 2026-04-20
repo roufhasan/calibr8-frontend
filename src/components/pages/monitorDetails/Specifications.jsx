@@ -1,6 +1,7 @@
 import Container from "@/components/shared/Container";
-import SectionDivider from "@/components/shared/SectionDivider";
-import { cn } from "@/lib/utils";
+import DetailSectionHeading from "@/components/shared/DetailSectionHeading";
+import SpecTable from "./SpecTable";
+import { formatPortList } from "@/utils/formatPortList";
 
 export default function Specifications({ monitor }) {
   const {
@@ -26,13 +27,7 @@ export default function Specifications({ monitor }) {
     gsync,
   } = monitor;
 
-  const connectivity = [
-    ports?.hdmi ? `HDMI ${ports.hdmi.version} ×${ports.hdmi.count}` : null,
-    ports?.displayport
-      ? `DisplayPort ${ports.displayport.version} ×${ports.displayport.count}`
-      : null,
-    ports?.audio ? `Audio Out ×${ports.audio.count}` : null,
-  ].filter(Boolean);
+  const connectivity = formatPortList(ports, true);
 
   const groups = [
     {
@@ -98,36 +93,12 @@ export default function Specifications({ monitor }) {
   return (
     <section className="py-12">
       <Container>
-        <SectionDivider label="Full Specifications" />
-        <div className="flex flex-col gap-8">
-          {groups.map((group) => {
-            const filtered = group.specs.filter((s) => s.value !== null);
-            if (!filtered.length) return null;
+        <DetailSectionHeading title="Full specifications." />
 
-            return (
-              <div key={group.heading}>
-                <p className="text-foreground/50 mb-2 text-xs font-medium tracking-widest uppercase">
-                  {group.heading}
-                </p>
-                <ul>
-                  {filtered.map((spec, i) => (
-                    <li
-                      key={i}
-                      className={cn(
-                        "flex items-center justify-between px-3 py-2.5 text-sm first:border-t last:border-b",
-                        i % 2 === 0 ? "bg-secondary/50" : "",
-                      )}
-                    >
-                      <span className="text-muted-foreground">
-                        {spec.label}
-                      </span>
-                      <span className="font-medium">{spec.value}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            );
-          })}
+        <div className="flex flex-col gap-8">
+          {groups.map((group) => (
+            <SpecTable key={group.heading} group={group} />
+          ))}
         </div>
       </Container>
     </section>

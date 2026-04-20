@@ -37,7 +37,7 @@ export default function MonitorListCard({ monitor, className = "" }) {
       {/* thumbnail */}
       <Link
         href={details_url}
-        className="bg-muted relative h-22 w-33 shrink-0 overflow-hidden border-r"
+        className="relative h-22 w-33 shrink-0 overflow-hidden bg-white"
       >
         <CldImage
           src={thumbnail_url}
