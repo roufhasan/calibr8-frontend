@@ -5,35 +5,35 @@ import SectionHeader from "@/components/shared/SectionHeader";
 const categories = [
   {
     name: "Gaming",
-    slug: "/gaming",
+    slug: "/monitors?useCase=gaming",
     img_url: "/images/home/gaming.png",
     tags: ["144Hz+", "<1ms"],
     count: 43,
   },
   {
     name: "Professional",
-    slug: "/professional",
+    slug: "/monitors?useCase=professional",
     img_url: "/images/home/professional.png",
     tags: ["144Hz+", "<1ms"],
     count: 43,
   },
   {
     name: "Ultrawide",
-    slug: "/ultrawide",
+    slug: "/monitors?resolution=uwqhd",
     img_url: "/images/home/ultrawide.png",
     tags: ["144Hz+", "<1ms"],
     count: 43,
   },
   {
     name: "Laptops",
-    slug: "/laptops",
+    slug: "/monitors",
     img_url: "/images/home/laptop.png",
     tags: ["144Hz+", "<1ms"],
     count: 43,
   },
   {
     name: "TVs",
-    slug: "/tv",
+    slug: "/monitors",
     img_url: "/images/home/tv.png",
     tags: ["144Hz+", "<1ms"],
     count: 43,
@@ -52,11 +52,7 @@ export default async function Category() {
         {categories?.length > 0 && (
           <div className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-6 md:grid-rows-[140px_140px]">
             {categories.map((category, index) => (
-              <CategoryCard
-                key={category.slug}
-                category={category}
-                index={index}
-              />
+              <CategoryCard key={index} category={category} index={index} />
             ))}
           </div>
         )}

@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import HeroSearchField from "./HeroSearchField";
 import { quickSearchLinks } from "@/utils/constants";
 
 export default function Hero() {
@@ -24,16 +23,7 @@ export default function Hero() {
 
         {/* search field */}
         <div className="mt-7 w-full max-w-110">
-          <div className="flex w-full rounded-sm border">
-            <Input
-              type="text"
-              placeholder={`Try "BenQ MOBIUZ" or "27" IPS 4K"...`}
-              className="flex-1 rounded-none rounded-l-sm border-0 px-3 text-xs md:text-xs"
-            />
-            <Button className="h-full shrink-0 rounded-sm rounded-l-none text-xs tracking-wider">
-              Search
-            </Button>
-          </div>
+          <HeroSearchField />
 
           {/* quick links */}
           <div className="mt-2.5 flex flex-wrap gap-1.5">

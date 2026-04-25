@@ -25,6 +25,7 @@ export default function MonitorPage({ monitors, params }) {
           isListView={isListView}
           toggleView={toggleView}
           onOpenFilter={() => setIsFilterOpen(true)}
+          total={monitors?.length}
         />
         <MonitorGrid monitors={monitors} isListView={isListView} />
         {/* TODO: implement pagination */}

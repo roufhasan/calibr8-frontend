@@ -50,6 +50,7 @@ export async function getMonitors(params = {}) {
     deltaE,
     srgb,
     dciP3,
+    q,
   } = params;
 
   const sortConfig = sortMap[sort] ?? sortMap["latest"];
@@ -114,6 +115,10 @@ export async function getMonitors(params = {}) {
   if (dciP3) {
     const [min] = dciP3.split(",").map(Number);
     query = query.gte("dci_p3", min);
+  }
+
+  if (q) {
+    query = query.or(`brand.ilike.%${q}%,model.ilike.%${q}%`);
   }
 
   return await query.order(sortConfig.column, {

@@ -1,18 +1,14 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, Search, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { navLinks } from "@/utils/constants";
 import Link from "next/link";
 import Container from "../Container";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/components/ui/input-group";
 import useBodyScrollLock from "@/hooks/useBodyScrollLock";
+import { cn } from "@/lib/utils";
 
-export default function MobileNav() {
+export default function MobileNav({ pathname }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
@@ -36,25 +32,16 @@ export default function MobileNav() {
       <Container
         className={`bg-background fixed top-13 left-0 z-50 h-[calc(100dvh-52px)] w-dvw ${isOpen ? "block" : "hidden"}`}
       >
-        <div className="py-4">
-          <InputGroup className="rounded-none border-0 border-b">
-            <InputGroupAddon>
-              <Search className="size-4" />
-            </InputGroupAddon>
-            <InputGroupInput
-              placeholder="Search monitors..."
-              className="text-sm"
-            />
-          </InputGroup>
-        </div>
-
         <ul className="flex flex-col">
           {navLinks.map((link) => (
             <li key={link.id}>
               <Link
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block py-3 font-medium"
+                className={cn(
+                  "block py-3 font-medium",
+                  pathname === link.href && "text-primary",
+                )}
               >
                 {link.label}
               </Link>

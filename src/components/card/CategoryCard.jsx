@@ -12,7 +12,7 @@ export default function CategoryCard({ category, index }) {
 
   return (
     <Link
-      href={`/categories/${slug}`}
+      href={slug}
       className={cn(
         "group bg-card relative min-h-40 overflow-hidden rounded border p-4 md:min-h-0 md:p-5",
         "hover:border-border transition-colors duration-150",
@@ -23,10 +23,11 @@ export default function CategoryCard({ category, index }) {
       <div className="pointer-events-none absolute -right-3 -bottom-3 size-24 opacity-[0.05] transition-all duration-300 select-none group-hover:scale-[1.06] group-hover:opacity-[0.10] md:size-28">
         <Image
           src={img_url}
-          alt=""
+          alt={name}
           fill
-          className="object-contain"
           aria-hidden
+          sizes="(max-width: 768px) 96px, (max-width: 1280px) 112px, 112px"
+          className="object-contain"
         />
       </div>
 

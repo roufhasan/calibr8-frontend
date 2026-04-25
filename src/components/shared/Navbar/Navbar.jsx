@@ -1,19 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Search } from "lucide-react";
 import Link from "next/link";
 import Container from "../Container";
 import MobileNav from "./MobileNav";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/components/ui/input-group";
-import { Kbd } from "@/components/ui/kbd";
 import { navLinks } from "@/utils/constants";
 import Logo from "../Logo";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import SearchField from "./SearchField";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -62,24 +56,10 @@ export default function Navbar() {
           </ul>
 
           {/* search field */}
-          <div className="hidden shrink-0 lg:block">
-            <InputGroup className="h-8">
-              <InputGroupAddon>
-                <Search className="size-3" />
-              </InputGroupAddon>
-              <InputGroupInput
-                placeholder="Search monitors..."
-                className="text-xs md:text-xs"
-              />
-              <InputGroupAddon align="inline-end">
-                <Kbd>⌘</Kbd>
-                <Kbd>K</Kbd>
-              </InputGroupAddon>
-            </InputGroup>
-          </div>
+          <SearchField />
 
           {/* mobile menu */}
-          <MobileNav />
+          <MobileNav pathname={pathname} />
         </nav>
       </Container>
     </header>
